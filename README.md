@@ -15,6 +15,8 @@
 
 The projection type is either `normal` or `rademacher`, the latter is default. 
 The argument before the projection type is the dimension of the projection. Default is 16384.
+
+You can view all the arguments (incl. the time limit for a job) in the slurm_docker.sbatch file. 
 # Parellelizing
 The hugginface dataset api allows slices in split names (e.g.:  `train[0%:10%]`, `train[123:1235]`).
 And all scripts were designed with this in mind. So simply:
