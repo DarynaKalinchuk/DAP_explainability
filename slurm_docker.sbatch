@@ -11,15 +11,19 @@
 
 python3 --version
 
-
 RANDOM_PROJ=""
+PROJ_ARGS=""
 
 if [ "$7" == "--random_projection" ]; then
     RANDOM_PROJ="--random_projection"
-    # Check if 9th argument is provided for projection type
-    if [ -n "$9" ]; then
-        PROJ_TYPE_ARG="--proj_type=$9"
-    fi
+    PROJ_ARGS="--proj_dim=$8 --proj_type=$9"
 fi
 
-python3 extract_gradients.py $1 $2 $3 --dataset_split=$4 --paradigm=$5 --mode=$6 $RANDOM_PROJ --proj_dim=$8 $PROJ_TYPE_ARG --gradients_per_file=1000
+python3 extract_gradients.py \
+    $1 $2 $3 \
+    --dataset_split=$4 \
+    --paradigm=$5 \
+    --mode=$6 \
+    $RANDOM_PROJ \
+    $PROJ_ARGS \
+    --gradients_per_file=1000
